@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Vehicle_Insurance_ManagmentModelStoreContainer" CdmEntityContainer="Vehicle_Insurance_ManagmentEntities">
+    <EntitySetMapping Name="Billings">
+      <EntityTypeMapping TypeName="Vehicle_Insurance_ManagmentModel.Billing">
+        <MappingFragment StoreEntitySet="Billing">
+          <ScalarProperty Name="Bill_Id" ColumnName="Bill_Id" />
+          <ScalarProperty Name="Pur_Details" ColumnName="Pur_Details" />
+          <ScalarProperty Name="Bill_Date" ColumnName="Bill_Date" />
+          <ScalarProperty Name="Pur_Amount" ColumnName="Pur_Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Claims">
+      <EntityTypeMapping TypeName="Vehicle_Insurance_ManagmentModel.Claim">
+        <MappingFragment StoreEntitySet="Claim">
+          <ScalarProperty Name="Claim_Id" ColumnName="Claim_Id" />
+          <ScalarProperty Name="Bill_Id" ColumnName="Bill_Id" />
+          <ScalarProperty Name="Claim_Date" ColumnName="Claim_Date" />
+          <ScalarProperty Name="Accident_Place" ColumnName="Accident_Place" />
+          <ScalarProperty Name="Accident_Description" ColumnName="Accident_Description" />
+          <ScalarProperty Name="Claim_Amount" ColumnName="Claim_Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Company_Admin">
+      <EntityTypeMapping TypeName="Vehicle_Insurance_ManagmentModel.Company_Admin">
+        <MappingFragment StoreEntitySet="Company_Admin">
+          <ScalarProperty Name="Admin_Id" ColumnName="Admin_Id" />
+          <ScalarProperty Name="Admin_Name" ColumnName="Admin_Name" />
+          <ScalarProperty Name="Admin_Pass" ColumnName="Admin_Pass" />
+          <ScalarProperty Name="Admin_Email" ColumnName="Admin_Email" />
+          <ScalarProperty Name="Admin_Phone" ColumnName="Admin_Phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Company_Expense">
+      <EntityTypeMapping TypeName="Vehicle_Insurance_ManagmentModel.Company_Expense">
+        <MappingFragment StoreEntitySet="Company_Expense">
+          <ScalarProperty Name="Exp_Id" ColumnName="Exp_Id" />
+          <ScalarProperty Name="Exp_Description" ColumnName="Exp_Description" />
+          <ScalarProperty Name="Exp_Amt" ColumnName="Exp_Amt" />
+          <ScalarProperty Name="Exp_Date" ColumnName="Exp_Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="Vehicle_Insurance_ManagmentModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
+          <ScalarProperty Name="Cust_Name" ColumnName="Cust_Name" />
+          <ScalarProperty Name="Cust_Add" ColumnName="Cust_Add" />
+          <ScalarProperty Name="Cust_Phone" ColumnName="Cust_Phone" />
+          <ScalarProperty Name="Cust_Email" ColumnName="Cust_Email" />
+          <ScalarProperty Name="Cust_Pass" ColumnName="Cust_Pass" />
+          <ScalarProperty Name="Cust_CNIC" ColumnName="Cust_CNIC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InsurancePolicies">
+      <EntityTypeMapping TypeName="Vehicle_Insurance_ManagmentModel.InsurancePolicy">
+        <MappingFragment StoreEntitySet="InsurancePolicy">
+          <ScalarProperty Name="Pol_Id" ColumnName="Pol_Id" />
+          <ScalarProperty Name="PolicyName" ColumnName="PolicyName" />
+          <ScalarProperty Name="Est_Amount" ColumnName="Est_Amount" />
+          <ScalarProperty Name="Ins_Amount" ColumnName="Ins_Amount" />
+          <ScalarProperty Name="Pol_Duration" ColumnName="Pol_Duration" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Purchases">
+      <EntityTypeMapping TypeName="Vehicle_Insurance_ManagmentModel.Purchase">
+        <MappingFragment StoreEntitySet="Purchase">
+          <ScalarProperty Name="Pur_Id" ColumnName="Pur_Id" />
+          <ScalarProperty Name="Vehicle" ColumnName="Vehicle" />
+          <ScalarProperty Name="Pur_Pol" ColumnName="Pur_Pol" />
+          <ScalarProperty Name="Pur_Date" ColumnName="Pur_Date" />
+          <ScalarProperty Name="Total_Amt" ColumnName="Total_Amt" />
+          <ScalarProperty Name="PP_Status" ColumnName="PP_Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="testimonials">
+      <EntityTypeMapping TypeName="Vehicle_Insurance_ManagmentModel.testimonial">
+        <MappingFragment StoreEntitySet="testimonials">
+          <ScalarProperty Name="Test_ID" ColumnName="Test_ID" />
+          <ScalarProperty Name="Cust_Test" ColumnName="Cust_Test" />
+          <ScalarProperty Name="Cust_Name" ColumnName="Cust_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vehicles">
+      <EntityTypeMapping TypeName="Vehicle_Insurance_ManagmentModel.Vehicle">
+        <MappingFragment StoreEntitySet="Vehicle">
+          <ScalarProperty Name="Veh_Id" ColumnName="Veh_Id" />
+          <ScalarProperty Name="Veh_Name" ColumnName="Veh_Name" />
+          <ScalarProperty Name="Veh_OwnerName" ColumnName="Veh_OwnerName" />
+          <ScalarProperty Name="Veh_Model" ColumnName="Veh_Model" />
+          <ScalarProperty Name="Veh_Version" ColumnName="Veh_Version" />
+          <ScalarProperty Name="Veh_Rate" ColumnName="Veh_Rate" />
+          <ScalarProperty Name="Veh_BodyNo" ColumnName="Veh_BodyNo" />
+          <ScalarProperty Name="Veh_EngineNo" ColumnName="Veh_EngineNo" />
+          <ScalarProperty Name="Veh_No" ColumnName="Veh_No" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

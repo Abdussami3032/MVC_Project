@@ -1,0 +1,373 @@
+﻿@model IEnumerable<WebApplication1.Models.Customer>
+
+@{
+    ViewBag.Title = "Customers";
+}
+
+<h2>Index</h2>
+<section id="home" class="w3l-banner py-5">
+    <div class="container py-lg-5 py-md-4">
+        <div class="row align-items-center py-lg-4 py-md-3">
+            <div class="col-lg-6 col-sm-12">
+                <h3 class="mb-md-4 mb-3">AUTO INSURANCE</h3>
+                <p>
+                    Whether it's a minivan with eight seats, a sporty coupe with two - or even a motorcycle - we can help you protect it.
+                    Find out more about the extras that are available with an Vehicle Insurance Policy.
+                </p>
+                <div class="mt-sm-5 mt-4">
+                    <a class="btn btn-primary btn-style" href="about.html"> Read More </a>
+                </div>
+            </div>
+            <div class="col-lg-5 offset-lg-1 col-md-8 col-sm-10 mt-lg-0 mt-md-5 mt-4">
+                <div class="banner-form-w3">
+                    <!-- banner form -->
+                    <form action="#" method="post">
+                        <h5 class="mb-4">Request a call back</h5>
+                        <div class="form-style-w3ls">
+                            <input placeholder="Your Name" name="name" type="text" required="">
+                            <input placeholder="Your Email" name="email" type="email" required="">
+                            <input placeholder="Contact Number" name="number" type="text" required="">
+                            <button class="btn btn-style btn-primary w-100"> Send request</button>
+                        </div>
+                    </form>
+                    <!-- //banner form -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- //banner section -->
+<!-- home page about section -->
+<section class="w3l-index3" id="about">
+    <div class="midd-w3 py-5">
+        <div class="container py-lg-5 py-md-3">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="position-relative">
+                        <img src="~/assets/images/poster.jpg" alt="" class="radius-image img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-lg-0 mt-md-5 mt-4 align-self">
+                    <h3 class="title-big">Auto glass repair</h3>
+                    <p class="mt-4">
+                        Comprehensive Coverage, which waives the deductible for repairs.
+                        For a minimal cost, you can add Full Window Glass,
+                        which waives the deductible regardless of repair or replacement.
+                        Both options provide new wiper blades in the event that your windshield is replaced.
+                    </p>
+                    <a href="about.html" class="btn btn-style btn-primary mt-lg-5 mt-4">Read our story</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<p>
+    
+        <h6 class="title-small text-center">Our Dealings</h6>
+        <h3 class="title-big mb-md-5 mb-4 text-center">Customers</h3>
+        </div>
+    </p>
+    <p class="title-small text-center">
+        @Html.ActionLink("Create New", "Create")
+</p>
+@foreach (var item in Model)
+{
+    {
+        
+        
+<section class="w3l-bottom-grids-6 py-5">
+    <div class="container py-lg-5 py-md-4">
+        <div class="grids-area-hny main-cont-wthree-fea row">
+            <div class="col-lg-4 col-md-6 grids-feature">
+                <div class="row1">
+                    <div class="area-box">
+
+                        <h4>
+                            @Html.DisplayNameFor(model => model.Cust_Name) &nbsp;&nbsp:
+                            &nbsp;
+                            @Html.DisplayFor(modelItem => item.Cust_Name)
+                        </h4>
+
+
+                        <p>@Html.DisplayNameFor(model => model.Cust_Add) &nbsp;&nbsp;:</p>
+                        &nbsp;
+                        <p>@Html.DisplayFor(modelItem => item.Cust_Add)</p>
+                        <br />
+                        <p>@Html.DisplayNameFor(model => model.Cust_Phone)&nbsp;&nbsp;:</p>
+                        &nbsp;
+                        <p>@Html.DisplayFor(modelItem => item.Cust_Phone)</p>
+                        &nbsp;
+                        <br />
+                        <p>@Html.DisplayNameFor(model => model.Cust_Email)&nbsp;&nbsp;:</p>
+                        &nbsp;
+                        <p>@Html.DisplayFor(modelItem => item.Cust_Email):</p>
+                        &nbsp;
+                        <br />
+                        <p> @Html.DisplayNameFor(model => model.Cust_Pass)&nbsp;&nbsp;:</p>
+                        &nbsp;
+                        <p>@Html.DisplayFor(modelItem => item.Cust_Pass)</p>
+                        &nbsp;
+                        <br />
+                        <p>@Html.DisplayNameFor(model => model.Cust_CNIC)&nbsp;&nbsp;:</p>
+                        &nbsp;
+                        <p>@Html.DisplayFor(modelItem => item.Cust_CNIC)</p>
+                        <br />
+                        <p>@Html.DisplayFor(modelItem => item.UserName)</p>
+                        <br />
+
+
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Cust_Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Cust_Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Cust_Id })
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+</section>
+            
+        }
+
+}
+<section class="w3l-aboutblock py-5" id="about">
+    <div class="midd-w3">
+        <div class="container py-lg-5 py-md-3">
+            <div class="row">
+                <div class="col-lg-6 left-wthree-img text-righ">
+                    <div class="position-relative">
+                        <img src="~/assets/images/blog1.jpg" alt="" class="img-fluid">
+                        <a href="#small-dialog" class="popup-with-zoom-anim play-view text-center position-absolute">
+                            <span class="video-play-icon">
+                                <span class="fa fa-play"></span>
+                            </span>
+                        </a>
+                        <!-- dialog itself, mfp-hide class is required to make dialog hidden -->
+                        <div id="small-dialog" class="zoom-anim-dialog mfp-hide">
+                            <iframe src="https://www.youtube.com/embed/eWUxqVFBq74" allow="autoplay; fullscreen"
+                                    allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-lg-0 mt-sm-5 mt-4 about-right-faq align-self">
+                    <span class="title-small mb-md-2">Why choose us</span>
+                    <h3 class="title-big">We are Qualified & Professional</h3>
+                    <p class="mt-lg-4 mt-3">
+                        You can count on our local, independent agents to help you make good decisions about your insurance protection. Get in touch with Our Insurance agent today.
+                    </p>
+                    <ol class="w3l-right mt-4">
+                        <li>We are endorsed by the local trading standards office</li>
+                        <li>All our work has a minimum 12-month guarantee all services</li>
+                        <li>We are endorsed by the local trading standards office</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- testimonials -->
+<section class="w3l-clients" id="clients">
+    <!-- /grids -->
+    <div class="cusrtomer-layout py-5">
+        <div class="container py-lg-5 py-md-4">
+            <!-- /grids -->
+            <div class="row testimonial-row">
+                <div class="col-lg-4 heading align-self">
+                    <h6 class="title-small">Client Testimonials</h6>
+                    <h3 class="title-big mb-md-5 mb-4">What our customers are saying</h3>
+                </div>
+
+                <div id="owl-demo1" class="col-lg-8 owl-two owl-carousel owl-theme mb-md-3 mb-sm-5 mb-4">
+                    <div class="item">
+                        <div class="testimonial-content">
+                            <div class="testimonial">
+                                <blockquote>
+                                    <q>
+                                        I've been with them since 14 years and for almost of both of my vehicles for car loans.
+                                        I will never be looking for a new financial service after 14 years and insurance.
+                                        Honesty, I do think it's better to get your Insurance from this company.
+                                    </q>
+                                </blockquote>
+                                <div class="testi-des">
+                                    <div class="test-img">
+                                        <img src=@Url.Content("~/assets/images/team1.jpg") class="img-fluid" alt="client-img">
+                                    </div>
+                                    <div class="peopl align-self">
+                                        <h3>John wilson</h3>
+                                        <p class="indentity">Web Designer </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimonial-content">
+                            <div class="testimonial">
+                                <blockquote>
+                                    <q>
+                                        I've been with them since 14 years and for almost of both of my vehicles for car loans.
+                                        I will never be looking for a new financial service after 14 years and insurance.
+                                        Honesty, I do think it's better to get your Insurance from this company.
+                                    </q>
+                                </blockquote>
+                                <div class="testi-des">
+                                    <div class="test-img">
+                                        <img src=@Url.Content("~/assets/images/team2.jpg") class="img-fluid" alt="client-img">
+                                    </div>
+                                    <div class="peopl align-self">
+                                        <h3>Julia sakura</h3>
+                                        <p class="indentity">Web Developer </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimonial-content">
+                            <div class="testimonial">
+                                <blockquote>
+                                    <q>
+                                        I've been with them since 14 years and for almost of both of my vehicles for car loans.
+                                        I will never be looking for a new financial service after 14 years and insurance.
+                                        Honesty, I do think it's better to get your Insurance from this company.
+                                    </q>
+                                </blockquote>
+                                <div class="testi-des">
+                                    <div class="test-img">
+                                        <img src=@Url.Content("~/assets/images/team3.jpg") class="img-fluid" alt="client-img">
+                                    </div>
+                                    <div class="peopl align-self">
+                                        <h3>Roy Linderson</h3>
+                                        <p class="indentity">Web designer</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimonial-content">
+                            <div class="testimonial">
+                                <blockquote>
+                                    <q>
+                                        I've been with them since 14 years and for almost of both of my vehicles for car loans.
+                                        I will never be looking for a new financial service after 14 years and insurance.
+                                        Honesty, I do think it's better to get your Insurance from this company.
+                                    </q>
+                                </blockquote>
+                                <div class="testi-des">
+                                    <div class="test-img">
+                                        <img src="~/assets/images/team4.jpg" class="img-fluid" alt="client-img">
+                                    </div>
+                                    <div class="peopl align-self">
+                                        <h3>Mike Thyson</h3>
+                                        <p class="indentity">Web Developer</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimonial-content">
+                            <div class="testimonial">
+                                <blockquote>
+                                    <q>
+                                        I've been with them since 14 years and for almost of both of my vehicles for car loans.
+                                        I will never be looking for a new financial service after 14 years and insurance.
+                                        Honesty, I do think it's better to get your Insurance from this company.
+                                    </q>
+                                </blockquote>
+                                <div class="testi-des">
+                                    <div class="test-img">
+                                        <img src="~/assets/images/team2.jpg" class="img-fluid" alt="client-img">
+                                    </div>
+                                    <div class="peopl align-self">
+                                        <h3>Laura gill</h3>
+                                        <p class="indentity">Web designer</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimonial-content">
+                            <div class="testimonial">
+                                <blockquote>
+                                    <q>
+                                        I've been with them since 14 years and for almost of both of my vehicles for car loans.
+                                        I will never be looking for a new financial service after 14 years and insurance.
+                                        Honesty, I do think it's better to get your Insurance from this company.
+                                    </q>
+                                </blockquote>
+                                <div class="testi-des">
+                                    <div class="test-img">
+                                        <img src="~/assets/images/team3.jpg" class="img-fluid" alt="client-img">
+                                    </div>
+                                    <div class="peopl align-self">
+                                        <h3>Smith Johnson</h3>
+                                        <p class="indentity">Web developer</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /grids -->
+    </div>
+    <!-- //grids -->
+</section>
+<!-- //testimonials -->
+<!-- middle -->
+<div class="middle py-5">
+    <div class="container py-3">
+        <div class="welcome-left text-center">
+            <h6 class="title-small text-center mb-3">Great car service</h6>
+            <h3>Premium car service matched with great workmanship. Best services you can count on</h3>
+            <a href="#started" class="btn btn-style btn-white mt-5 mr-2">Get started</a>
+            <a href="contact.html" class="btn btn-style btn-primary mt-5">Contact Us</a>
+        </div>
+    </div>
+</div>
+<!-- //middle -->
+<!-- call us -->
+<section class="w3l-call pt-5" id="book">
+    <div class="container pt-lg-5 pt-md-4">
+        <div class="row">
+            <div class="col-md-8">
+                <h4 class="mb-2">Book a trusted mechanic</h4>
+                <p class="mb-2">Call Us Now</p>
+                <h2><span class="fa mr-1 fa-phone"></span> (042) 111-000-014</h2>
+                <p class="mt-4">
+                    Having problems with your car, and don’t know where to find quality mechanics who can tend to your vehicle repair needs?
+                    book your mechanic by Contacting us to find top mechanics in your area best suited for the job.
+                </p>
+                <a class="btn btn-primary btn-style mt-md-5 mt-4" href="#started"> Get Started </a>
+                <a href="contact.html" class="btn btn-outline-primary btn-style ml-2 mt-md-5 mt-4">Contact Us</a>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-8 mt-md-0 mt-5">
+                <img src="~/assets/images/customer.png" alt="" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- //call us -->
+<!-- forms -->
+<section class="w3l-forms-9" id="newsletter">
+    <div class="main-w3 py-5 bg-primary">
+        <div class="container py-lg-3">
+            <div class="row align-items-center">
+                <div class="main-midd col-lg-6">
+                    <h4 class="title-head">Subscribe for Special Offers</h4>
+                    <p>Get Weekly Newsletters</p>
+                </div>
+                <div class="main-midd-2 col-lg-6 mt-lg-0 mt-4">
+                    <form action="#url" method="GET" class="rightside-form">
+                        <input type="email" class="form-control" name="email" placeholder="Enter your email">
+                        <button class="btn" type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

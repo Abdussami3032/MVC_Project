@@ -1,0 +1,61 @@
+﻿@model IEnumerable<WebApplication1.Models.Claim>
+
+@{
+    ViewBag.Title = "Claim";
+}
+<div style="margin-top:100px">
+    <h2 style="text-align:center">Claim</h2>
+
+    <p style="text-align:center">
+        @Html.ActionLink("Create New", "Create", "Claim")
+    </p>
+    <div class="container-fluid">
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Claim_Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Accident_Place)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Accident_Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Claim_Amount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Billing.Bill_Date)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Claim_Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Accident_Place)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Accident_Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Claim_Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Billing.Bill_Date)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Claims", new { id = item.Claim_Id }, null) |
+                        @Html.ActionLink("Details", "Details", "Claims", new { id = item.Claim_Id }, null) |
+                        @Html.ActionLink("Delete", "Delete", "Claims", new { id = item.Claim_Id }, null)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

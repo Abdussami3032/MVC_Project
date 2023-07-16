@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2971cafded4a4d10bc0a91aea9c4e9ff" Name="Diagram1">
+        <EntityTypeShape EntityType="Vehicle_Insurance_ManagmentModel.Billing" Width="1.5" PointX="7.5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vehicle_Insurance_ManagmentModel.Claim" Width="1.5" PointX="9.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vehicle_Insurance_ManagmentModel.Company_Admin" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vehicle_Insurance_ManagmentModel.Company_Expense" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vehicle_Insurance_ManagmentModel.Customer" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vehicle_Insurance_ManagmentModel.InsurancePolicy" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vehicle_Insurance_ManagmentModel.Purchase" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vehicle_Insurance_ManagmentModel.testimonial" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Vehicle_Insurance_ManagmentModel.Vehicle" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <AssociationConnector Association="Vehicle_Insurance_ManagmentModel.FK__Billing__Pur_Det__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="Vehicle_Insurance_ManagmentModel.FK__Claim__Bill_Id__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="Vehicle_Insurance_ManagmentModel.FK__testimoni__Cust___38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="Vehicle_Insurance_ManagmentModel.FK__Vehicle__Veh_Own__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="Vehicle_Insurance_ManagmentModel.FK__Purchase__Pur_Po__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="Vehicle_Insurance_ManagmentModel.FK__Purchase__Vehicl__2A4B4B5E" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

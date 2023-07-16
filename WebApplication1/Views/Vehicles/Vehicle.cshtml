@@ -1,0 +1,105 @@
+﻿@model IEnumerable<WebApplication1.Models.Vehicle>
+
+@{
+
+
+    ViewBag.Title = "Vehicle";
+}
+
+<h2>Index</h2>
+<section class="w3l-about-breadcrumb">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-5">
+        <div class="container py-lg-5 py-md-3">
+            <h2 class="title">About Us</h2>
+        </div>
+    </div>
+</section>
+<section class="w3l-breadcrumb">
+    <div class="container">
+        <ul class="breadcrumbs-custom-path">
+            <li><a href="#url">Home</a></li>
+            <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> About</li>
+        </ul>
+    </div>
+</section>
+<section class="w3l-about py-5" id="about">
+    <div class="container py-lg-5 py-md-3">
+        <div class="about-block">
+            <h6 class="title-small">About company</h6>
+            <h3 class="title-big">We are qualified & of experience in this field.</h3>
+            <p class="mt-md-4 mt-3">
+                Lorem ipsum viverra feugiat. Pellen tesque libero ut justo,
+                ultrices in ligula. Semper at tempufddfel. Lorem ipsum dolor sit amet
+                elit. Non quae, fugiat nihil ad. Lorem ipsum dolor sit amet. Lorem ipsum init
+                dolor sit, amet elit. Dolor ipsum non velit, culpa!
+            </p>
+            <a href="#url" class="img-height">
+                <img src="~/assets/images/ab.jpg" alt="" class="radius-image img-fluid mt-md-3 mt-1" />
+            </a>
+        </div>
+    </div>
+    </div>
+</section>
+
+<p class="title-small text-center">
+    @Html.ActionLink("Create New", "Create")
+</p>
+<section class="w3l-bottom-grids-6 py-5" />
+<div class="container py-lg-5 py-md-4">
+    <h6 class="title-small text-center">Vehicles</h6>
+    <h3 class="title-big mb-md-5 mb-4 text-center">Insured Vehicles</h3>
+    <div class="grids-area-hny main-cont-wthree-fea row">
+
+        @foreach (var item in Model)
+        {
+
+
+            <div class="col-lg-4 col-md-6 grids-feature">
+                <div class="area-box">
+                    <h4>
+                        @Html.DisplayNameFor(model => model.Veh_Name)&nbsp;&nbsp; :
+                        &nbsp;
+                        @Html.DisplayFor(modelItem => item.Veh_Name)
+                    </h4>
+
+                    <p>@Html.DisplayNameFor(model => model.Veh_Model) &nbsp;&nbsp; :</p>
+                    &nbsp;
+                    <p>@Html.DisplayFor(modelItem => item.Veh_Model)</p>
+
+                    <p>@Html.DisplayNameFor(model => model.Veh_Version)&nbsp;&nbsp; :</p>
+                    &nbsp;
+                    <p>@Html.DisplayFor(modelItem => item.Veh_Version)</p>
+                    <br />
+                    <p>@Html.DisplayNameFor(model => model.Veh_Rate)&nbsp;&nbsp; :</p>
+                    &nbsp;
+                    <p>@Html.DisplayFor(modelItem => item.Veh_Rate)</p>
+                    <br />
+                    <p>@Html.DisplayNameFor(model => model.Veh_BodyNo)&nbsp;&nbsp; :</p>
+                    &nbsp;
+                    <p>@Html.DisplayFor(modelItem => item.Veh_BodyNo)</p>
+                    <br />
+                    <p>@Html.DisplayNameFor(model => model.Veh_EngineNo)&nbsp;&nbsp; :</p>
+                    &nbsp;
+                    <p>@Html.DisplayFor(modelItem => item.Veh_EngineNo)</p>
+                    <br />
+                    <p>@Html.DisplayNameFor(model => model.Veh_No)&nbsp;&nbsp; :</p>
+                    &nbsp;
+                    <p>@Html.DisplayFor(modelItem => item.Veh_No)</p>
+                    <br />
+                    <p>@Html.DisplayNameFor(model => model.Customer.Cust_Name)&nbsp;&nbsp; :</p>
+                    &nbsp;
+                    <p>@Html.DisplayFor(modelItem => item.Customer.Cust_Name)</p>
+                    <br />
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Veh_Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Veh_Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Veh_Id })
+
+                </div>
+            </div>
+
+
+
+        }
+    </div>
+</div>
+

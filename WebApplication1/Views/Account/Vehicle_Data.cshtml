@@ -1,0 +1,29 @@
+﻿@model IEnumerable<WebApplication1.Models.Vehicle>
+
+<section class="w3l-bottom-grids-6 py-5" id="services">
+    <div class="container py-lg-5 py-md-4">
+        <h6 class="title-small text-center">Our Insured Vehicles</h6>
+        <h3 class="title-big mb-md-5 mb-4 text-center">Insurance On Vehicles</h3>
+        <div class="grids-area-hny main-cont-wthree-fea row">
+            @foreach (var item in Model)
+            {<div class="col-lg-4 col-md-6 grids-feature">
+                    <div class="area-box">
+                        <span class="fa fa-car">@Html.ActionLink("Details", "VehicleByCustomer", "Vehicles")</span>
+                        <h4><a href="#feature" class="title-head">@item.Veh_Name</a></h4>
+                        <p>@Html.DisplayNameFor(model => model.Veh_OwnerName):</p>
+                        <p>@Html.DisplayFor(modelItem => item.Veh_OwnerName)</p>
+                        <br />
+                        <p> @Html.DisplayNameFor(model => model.Veh_No):</p>
+                        <p>@Html.DisplayFor(modelItem => item.Veh_No)</p>
+                        <br />
+                        <p>@Html.DisplayNameFor(model => model.Veh_Model):</p>
+                        <p>@Html.DisplayFor(modelItem => item.Veh_Model)</p>
+
+
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>

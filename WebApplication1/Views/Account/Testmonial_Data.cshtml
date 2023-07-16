@@ -1,0 +1,55 @@
+﻿@model IEnumerable<WebApplication1.Models.testimonial>
+
+@{
+    ViewBag.Title = "Testimonials";
+}
+<div style="margin-top:100px">
+    <h2 style="text-align:center">Testimonials</h2>
+
+    <p style="text-align:center">
+        @if (Session["UserID"]!=null)
+        {
+        @Html.ActionLink("Add your Testimonial", "Create", "testimonials")
+        }
+    </p>
+    <section class="w3l-clients" id="clients">
+        <!-- /grids -->
+        <div class="cusrtomer-layout py-5">
+            <div class="container py-lg-5 py-md-4">
+                <!-- /grids -->
+                <div class="row testimonial-row">
+                    <div class="col-lg-4 heading align-self">
+                        <h6 class="title-small">Client Testimonials</h6>
+                        <h3 class="title-big mb-md-5 mb-4">What our customers are saying</h3>
+                    </div>
+                    <div id="owl-demo1" class="col-lg-8 owl-two owl-carousel owl-theme mb-md-3 mb-sm-5 mb-4">
+                        @foreach (var item in Model)
+                        {
+                            <div class="item">
+                                <div class="testimonial-content">
+                                    <div class="testimonial">
+                                        <blockquote>
+                                            <q>
+                                                @Html.DisplayFor(modelItem => item.Cust_Test)
+                                            </q>
+                                        </blockquote>
+                                        <div class="testi-des">
+                                            <div class="test-img">
+                                                <img src="~/assets/images/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper.png" class="img-fluid" alt="client-img">
+                                            </div>
+                                            <div class="peopl align-self">
+                                                <h3>@Html.DisplayFor(modelItem => item.Customer.Cust_Name)</h3>
+                                                <p class="indentity">@Html.DisplayFor(model => item.Customer.Cust_Email) </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

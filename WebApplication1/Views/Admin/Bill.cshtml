@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WebApplication1.Models.Billing>
+
+@{
+    ViewBag.Title = "Bill";
+}
+<div style="margin-top:100px">
+    <h2 style="text-align:center">Bill</h2>
+
+    <p style="text-align:center">
+        @Html.ActionLink("Create New", "Create", "Billings")
+    </p>
+    <div class="container-fluid">
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Bill_Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pur_Amount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Purchase.Pur_Date)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Bill_Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Pur_Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Purchase.Pur_Date)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Billings", new { id = item.Bill_Id }, null) |
+                        @Html.ActionLink("Details", "Details", "Billings", new { id = item.Bill_Id }, null) |
+                        @Html.ActionLink("Delete", "Delete", "Billings", new { id = item.Bill_Id }, null)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

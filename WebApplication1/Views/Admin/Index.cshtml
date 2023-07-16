@@ -1,0 +1,153 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+}
+<section id="home" class="w3l-banner py-5">
+    <div class="container py-lg-5 py-md-4">
+        <div class="row align-items-center py-lg-4 py-md-3">
+            <div class="col-lg-6 col-sm-12">
+                <h3 class="mb-md-4 mb-3">Professional Vehicle Insurance</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, excepturi.
+                    Distinctio accusantium fugit odit? Fugit ipsam. Sed ac fringilla ex. Nam mauris velit, ac
+                    cursus quis, non leo.
+                </p>
+                
+            </div>
+            <div class="col-lg-5 offset-lg-1 col-md-8 col-sm-10 mt-lg-0 mt-md-5 mt-4">
+                
+            </div>
+        </div>
+    </div>
+</section>
+<!-- //banner section -->
+<!-- home page about section -->
+<section class="w3l-index3" id="about">
+    <div class="midd-w3 py-5">
+        <div class="container py-lg-5 py-md-3">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="position-relative">
+                        <img src="~/assets/images/about.jpg" alt="" class="radius-image img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-lg-0 mt-md-5 mt-4 align-self">
+                    <h3 class="title-big">We value our clients and offer a personal, professional service.</h3>
+                    <p class="mt-4">
+                        Lorem ipsum viverra feugiat. Pellen tesque libero ut justo,
+                        ultrices in ligula. Semper at tempufddfel. Lorem ipsum dolor sit amet
+                        elit. Non quae, fugiat nihil ad. Lorem ipsum dolor sit amet. Lorem ipsum init
+                        dolor sit, amet elit. Dolor ipsum non velit, culpa!
+                    </p>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- //home page about section -->
+<!-- /bottom-grids-->
+
+<!-- //bottom-grids-->
+<!-- stats -->
+
+<!-- //stats -->
+<!-- /bottom-grids-->
+@{ Html.RenderAction("Admin_Data");}
+<!-- //bottom-grids-->
+<section class="w3l-aboutblock py-5" id="about">
+    <div class="midd-w3">
+        <div class="container py-lg-5 py-md-3">
+            <div class="row">
+                <div class="col-lg-6 left-wthree-img text-righ">
+                    <div class="position-relative">
+                        <img src="~/assets/images/blog1.jpg" alt="" class="img-fluid">
+                        <a href="#small-dialog" class="popup-with-zoom-anim play-view text-center position-absolute">
+                            <span class="video-play-icon">
+                                <span class="fa fa-play"></span>
+                            </span>
+                        </a>
+                        <!-- dialog itself, mfp-hide class is required to make dialog hidden -->
+                        <div id="small-dialog" class="zoom-anim-dialog mfp-hide">
+                            <iframe src="https://www.youtube.com/embed/eWUxqVFBq74" allow="autoplay; fullscreen"
+                                    allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-lg-0 mt-sm-5 mt-4 about-right-faq align-self">
+                    <span class="title-small mb-md-2">Why choose us</span>
+                    <h3 class="title-big">We are Qualified & Professional</h3>
+                    <p class="mt-lg-4 mt-3">
+                        Lorem ipsum viverra feugiat. Pellen tesque libero ut justo,
+                        ultrices in ligula. Semper at tempufddfel. Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit. Non quae, fugiat ad.
+                    </p>
+                    <ol class="w3l-right mt-4">
+                        <li>We are endorsed by the local trading standards office</li>
+                        <li>All our work has a minimum 12-month guarantee all services</li>
+                        <li>We are endorsed by the local trading standards office</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- testimonials -->
+
+@{Html.RenderAction("Testmonial_Data");
+}
+<!-- //testimonials -->
+<!-- middle -->
+<div class="middle py-5">
+    <div class="container py-3">
+        <div class="welcome-left text-center">
+            <h6 class="title-small text-center mb-3">Great car service</h6>
+            <h3>Premium car service matched with great workmanship. Best services you can count on</h3>
+            
+            <li class="btn btn-outline-primary btn-style ml-2 mt-md-5 mt-4">@Html.ActionLink("Contact", "ContactUs", "Account")</li>
+        </div>
+    </div>
+</div>
+<!-- //middle -->
+<!-- call us -->
+<section class="w3l-call pt-5" id="book">
+    <div class="container pt-lg-5 pt-md-4">
+        <div class="row">
+            <div class="col-md-8">
+                <h4 class="mb-2">Book a trusted mechanic</h4>
+                <p class="mb-2">Call Us Now</p>
+                <h2><span class="fa mr-1 fa-phone"></span> +1(12) 366 411 4999</h2>
+                <p class="mt-4">
+                    Nam arcu mauris, tincidunt sed convallis non, egestas ut lacus. Cras sapien urna,
+                    varius malesuada ut varius consequat, hendrerit nisl. Aliquam, odio none.
+                </p>
+                <a class="btn btn-primary btn-style mt-md-5 mt-4" href="#started"> Get Started </a>
+                <li class="btn btn-outline-primary btn-style ml-2 mt-md-5 mt-4">@Html.ActionLink("Contact", "ContactUs", "Account")</li>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-8 mt-md-0 mt-5">
+                <img src="~/assets/images/customer.png" alt="" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- //call us -->
+<!-- forms -->
+<section class="w3l-forms-9" id="newsletter">
+    <div class="main-w3 py-5 bg-primary">
+        <div class="container py-lg-3">
+            <div class="row align-items-center">
+                <div class="main-midd col-lg-6">
+                    <h4 class="title-head">Subscribe for Special Offers</h4>
+                    <p>Get Weekly Newsletters</p>
+                </div>
+                <div class="main-midd-2 col-lg-6 mt-lg-0 mt-4">
+                    <form action="#url" method="GET" class="rightside-form">
+                        <input type="email" class="form-control" name="email" placeholder="Enter your email">
+                        <button class="btn" type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

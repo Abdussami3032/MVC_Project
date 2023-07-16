@@ -1,0 +1,559 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Vehicle_Insurance_ManagmentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Billing">
+          <Key>
+            <PropertyRef Name="Bill_Id" />
+          </Key>
+          <Property Name="Bill_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pur_Details" Type="int" />
+          <Property Name="Bill_Date" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Pur_Amount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Claim">
+          <Key>
+            <PropertyRef Name="Claim_Id" />
+          </Key>
+          <Property Name="Claim_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Bill_Id" Type="int" />
+          <Property Name="Claim_Date" Type="varchar" MaxLength="10" />
+          <Property Name="Accident_Place" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Accident_Description" Type="varchar(max)" Nullable="false" />
+          <Property Name="Claim_Amount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Company_Admin">
+          <Key>
+            <PropertyRef Name="Admin_Id" />
+          </Key>
+          <Property Name="Admin_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Admin_Name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Admin_Pass" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Admin_Email" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Admin_Phone" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Company_Expense">
+          <Key>
+            <PropertyRef Name="Exp_Id" />
+          </Key>
+          <Property Name="Exp_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Exp_Description" Type="varchar(max)" Nullable="false" />
+          <Property Name="Exp_Amt" Type="int" Nullable="false" />
+          <Property Name="Exp_Date" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Cust_Id" />
+          </Key>
+          <Property Name="Cust_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cust_Name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cust_Add" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cust_Phone" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="Cust_Email" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Cust_Pass" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Cust_CNIC" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InsurancePolicy">
+          <Key>
+            <PropertyRef Name="Pol_Id" />
+          </Key>
+          <Property Name="Pol_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PolicyName" Type="varchar" MaxLength="30" />
+          <Property Name="Est_Amount" Type="int" Nullable="false" />
+          <Property Name="Ins_Amount" Type="int" Nullable="false" />
+          <Property Name="Pol_Duration" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="Pur_Id" />
+          </Key>
+          <Property Name="Pur_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Vehicle" Type="int" />
+          <Property Name="Pur_Pol" Type="int" />
+          <Property Name="Pur_Date" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Total_Amt" Type="int" Nullable="false" />
+          <Property Name="PP_Status" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="testimonials">
+          <Key>
+            <PropertyRef Name="Test_ID" />
+          </Key>
+          <Property Name="Test_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cust_Test" Type="varchar(max)" />
+          <Property Name="Cust_Name" Type="int" />
+        </EntityType>
+        <EntityType Name="Vehicle">
+          <Key>
+            <PropertyRef Name="Veh_Id" />
+          </Key>
+          <Property Name="Veh_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Veh_Name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Veh_OwnerName" Type="int" />
+          <Property Name="Veh_Model" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Veh_Version" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Veh_Rate" Type="int" Nullable="false" />
+          <Property Name="Veh_BodyNo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Veh_EngineNo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Veh_No" Type="int" />
+        </EntityType>
+        <Association Name="FK__Billing__Pur_Det__2E1BDC42">
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="0..1" />
+          <End Role="Billing" Type="Self.Billing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Purchase">
+              <PropertyRef Name="Pur_Id" />
+            </Principal>
+            <Dependent Role="Billing">
+              <PropertyRef Name="Pur_Details" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Claim__Bill_Id__30F848ED">
+          <End Role="Billing" Type="Self.Billing" Multiplicity="0..1" />
+          <End Role="Claim" Type="Self.Claim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Billing">
+              <PropertyRef Name="Bill_Id" />
+            </Principal>
+            <Dependent Role="Claim">
+              <PropertyRef Name="Bill_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Purchase__Pur_Po__2B3F6F97">
+          <End Role="InsurancePolicy" Type="Self.InsurancePolicy" Multiplicity="0..1" />
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InsurancePolicy">
+              <PropertyRef Name="Pol_Id" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="Pur_Pol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Purchase__Vehicl__2A4B4B5E">
+          <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="0..1" />
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="Veh_Id" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="Vehicle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__testimoni__Cust___38996AB5">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="testimonials" Type="Self.testimonials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Cust_Id" />
+            </Principal>
+            <Dependent Role="testimonials">
+              <PropertyRef Name="Cust_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehicle__Veh_Own__25869641">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Cust_Id" />
+            </Principal>
+            <Dependent Role="Vehicle">
+              <PropertyRef Name="Veh_OwnerName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Vehicle_Insurance_ManagmentModelStoreContainer">
+          <EntitySet Name="Billing" EntityType="Self.Billing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Claim" EntityType="Self.Claim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company_Admin" EntityType="Self.Company_Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company_Expense" EntityType="Self.Company_Expense" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InsurancePolicy" EntityType="Self.InsurancePolicy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="testimonials" EntityType="Self.testimonials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehicle" EntityType="Self.Vehicle" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Billing__Pur_Det__2E1BDC42" Association="Self.FK__Billing__Pur_Det__2E1BDC42">
+            <End Role="Purchase" EntitySet="Purchase" />
+            <End Role="Billing" EntitySet="Billing" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Claim__Bill_Id__30F848ED" Association="Self.FK__Claim__Bill_Id__30F848ED">
+            <End Role="Billing" EntitySet="Billing" />
+            <End Role="Claim" EntitySet="Claim" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Purchase__Pur_Po__2B3F6F97" Association="Self.FK__Purchase__Pur_Po__2B3F6F97">
+            <End Role="InsurancePolicy" EntitySet="InsurancePolicy" />
+            <End Role="Purchase" EntitySet="Purchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Purchase__Vehicl__2A4B4B5E" Association="Self.FK__Purchase__Vehicl__2A4B4B5E">
+            <End Role="Vehicle" EntitySet="Vehicle" />
+            <End Role="Purchase" EntitySet="Purchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK__testimoni__Cust___38996AB5" Association="Self.FK__testimoni__Cust___38996AB5">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="testimonials" EntitySet="testimonials" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehicle__Veh_Own__25869641" Association="Self.FK__Vehicle__Veh_Own__25869641">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Vehicle" EntitySet="Vehicle" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Vehicle_Insurance_ManagmentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Billing">
+          <Key>
+            <PropertyRef Name="Bill_Id" />
+          </Key>
+          <Property Name="Bill_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pur_Details" Type="Int32" />
+          <Property Name="Bill_Date" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pur_Amount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Purchase" Relationship="Self.FK__Billing__Pur_Det__2E1BDC42" FromRole="Billing" ToRole="Purchase" />
+          <NavigationProperty Name="Claims" Relationship="Self.FK__Claim__Bill_Id__30F848ED" FromRole="Billing" ToRole="Claim" />
+        </EntityType>
+        <EntityType Name="Claim">
+          <Key>
+            <PropertyRef Name="Claim_Id" />
+          </Key>
+          <Property Name="Claim_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Bill_Id" Type="Int32" />
+          <Property Name="Claim_Date" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Accident_Place" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Accident_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Claim_Amount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Billing" Relationship="Self.FK__Claim__Bill_Id__30F848ED" FromRole="Claim" ToRole="Billing" />
+        </EntityType>
+        <EntityType Name="Company_Admin">
+          <Key>
+            <PropertyRef Name="Admin_Id" />
+          </Key>
+          <Property Name="Admin_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Admin_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Admin_Pass" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Admin_Email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Admin_Phone" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Company_Expense">
+          <Key>
+            <PropertyRef Name="Exp_Id" />
+          </Key>
+          <Property Name="Exp_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Exp_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Exp_Amt" Type="Int32" Nullable="false" />
+          <Property Name="Exp_Date" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Cust_Id" />
+          </Key>
+          <Property Name="Cust_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cust_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cust_Add" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cust_Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cust_Email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cust_Pass" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cust_CNIC" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="testimonials" Relationship="Self.FK__testimoni__Cust___38996AB5" FromRole="Customer" ToRole="testimonials" />
+          <NavigationProperty Name="Vehicles" Relationship="Self.FK__Vehicle__Veh_Own__25869641" FromRole="Customer" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="InsurancePolicy">
+          <Key>
+            <PropertyRef Name="Pol_Id" />
+          </Key>
+          <Property Name="Pol_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PolicyName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Est_Amount" Type="Int32" Nullable="false" />
+          <Property Name="Ins_Amount" Type="Int32" Nullable="false" />
+          <Property Name="Pol_Duration" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Purchases" Relationship="Self.FK__Purchase__Pur_Po__2B3F6F97" FromRole="InsurancePolicy" ToRole="Purchase" />
+        </EntityType>
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="Pur_Id" />
+          </Key>
+          <Property Name="Pur_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vehicle" Type="Int32" />
+          <Property Name="Pur_Pol" Type="Int32" />
+          <Property Name="Pur_Date" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Total_Amt" Type="Int32" Nullable="false" />
+          <Property Name="PP_Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Billings" Relationship="Self.FK__Billing__Pur_Det__2E1BDC42" FromRole="Purchase" ToRole="Billing" />
+          <NavigationProperty Name="InsurancePolicy" Relationship="Self.FK__Purchase__Pur_Po__2B3F6F97" FromRole="Purchase" ToRole="InsurancePolicy" />
+          <NavigationProperty Name="Vehicle1" Relationship="Self.FK__Purchase__Vehicl__2A4B4B5E" FromRole="Purchase" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="testimonial">
+          <Key>
+            <PropertyRef Name="Test_ID" />
+          </Key>
+          <Property Name="Test_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cust_Test" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Cust_Name" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__testimoni__Cust___38996AB5" FromRole="testimonials" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Vehicle">
+          <Key>
+            <PropertyRef Name="Veh_Id" />
+          </Key>
+          <Property Name="Veh_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Veh_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Veh_OwnerName" Type="Int32" />
+          <Property Name="Veh_Model" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Veh_Version" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Veh_Rate" Type="Int32" Nullable="false" />
+          <Property Name="Veh_BodyNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Veh_EngineNo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Veh_No" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__Vehicle__Veh_Own__25869641" FromRole="Vehicle" ToRole="Customer" />
+          <NavigationProperty Name="Purchases" Relationship="Self.FK__Purchase__Vehicl__2A4B4B5E" FromRole="Vehicle" ToRole="Purchase" />
+        </EntityType>
+        <Association Name="FK__Billing__Pur_Det__2E1BDC42">
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="0..1" />
+          <End Role="Billing" Type="Self.Billing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Purchase">
+              <PropertyRef Name="Pur_Id" />
+            </Principal>
+            <Dependent Role="Billing">
+              <PropertyRef Name="Pur_Details" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Claim__Bill_Id__30F848ED">
+          <End Role="Billing" Type="Self.Billing" Multiplicity="0..1" />
+          <End Role="Claim" Type="Self.Claim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Billing">
+              <PropertyRef Name="Bill_Id" />
+            </Principal>
+            <Dependent Role="Claim">
+              <PropertyRef Name="Bill_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__testimoni__Cust___38996AB5">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="testimonials" Type="Self.testimonial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Cust_Id" />
+            </Principal>
+            <Dependent Role="testimonials">
+              <PropertyRef Name="Cust_Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehicle__Veh_Own__25869641">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Cust_Id" />
+            </Principal>
+            <Dependent Role="Vehicle">
+              <PropertyRef Name="Veh_OwnerName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Purchase__Pur_Po__2B3F6F97">
+          <End Role="InsurancePolicy" Type="Self.InsurancePolicy" Multiplicity="0..1" />
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InsurancePolicy">
+              <PropertyRef Name="Pol_Id" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="Pur_Pol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Purchase__Vehicl__2A4B4B5E">
+          <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="0..1" />
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="Veh_Id" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="Vehicle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Vehicle_Insurance_ManagmentEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Billings" EntityType="Self.Billing" />
+          <EntitySet Name="Claims" EntityType="Self.Claim" />
+          <EntitySet Name="Company_Admin" EntityType="Self.Company_Admin" />
+          <EntitySet Name="Company_Expense" EntityType="Self.Company_Expense" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="InsurancePolicies" EntityType="Self.InsurancePolicy" />
+          <EntitySet Name="Purchases" EntityType="Self.Purchase" />
+          <EntitySet Name="testimonials" EntityType="Self.testimonial" />
+          <EntitySet Name="Vehicles" EntityType="Self.Vehicle" />
+          <AssociationSet Name="FK__Billing__Pur_Det__2E1BDC42" Association="Self.FK__Billing__Pur_Det__2E1BDC42">
+            <End Role="Purchase" EntitySet="Purchases" />
+            <End Role="Billing" EntitySet="Billings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Claim__Bill_Id__30F848ED" Association="Self.FK__Claim__Bill_Id__30F848ED">
+            <End Role="Billing" EntitySet="Billings" />
+            <End Role="Claim" EntitySet="Claims" />
+          </AssociationSet>
+          <AssociationSet Name="FK__testimoni__Cust___38996AB5" Association="Self.FK__testimoni__Cust___38996AB5">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="testimonials" EntitySet="testimonials" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehicle__Veh_Own__25869641" Association="Self.FK__Vehicle__Veh_Own__25869641">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Vehicle" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Purchase__Pur_Po__2B3F6F97" Association="Self.FK__Purchase__Pur_Po__2B3F6F97">
+            <End Role="InsurancePolicy" EntitySet="InsurancePolicies" />
+            <End Role="Purchase" EntitySet="Purchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Purchase__Vehicl__2A4B4B5E" Association="Self.FK__Purchase__Vehicl__2A4B4B5E">
+            <End Role="Vehicle" EntitySet="Vehicles" />
+            <End Role="Purchase" EntitySet="Purchases" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Vehicle_Insurance_ManagmentModelStoreContainer" CdmEntityContainer="Vehicle_Insurance_ManagmentEntities">
+          <EntitySetMapping Name="Billings">
+            <EntityTypeMapping TypeName="Vehicle_Insurance_ManagmentModel.Billing">
+              <MappingFragment StoreEntitySet="Billing">
+                <ScalarProperty Name="Bill_Id" ColumnName="Bill_Id" />
+                <ScalarProperty Name="Pur_Details" ColumnName="Pur_Details" />
+                <ScalarProperty Name="Bill_Date" ColumnName="Bill_Date" />
+                <ScalarProperty Name="Pur_Amount" ColumnName="Pur_Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Claims">
+            <EntityTypeMapping TypeName="Vehicle_Insurance_ManagmentModel.Claim">
+              <MappingFragment StoreEntitySet="Claim">
+                <ScalarProperty Name="Claim_Id" ColumnName="Claim_Id" />
+                <ScalarProperty Name="Bill_Id" ColumnName="Bill_Id" />
+                <ScalarProperty Name="Claim_Date" ColumnName="Claim_Date" />
+                <ScalarProperty Name="Accident_Place" ColumnName="Accident_Place" />
+                <ScalarProperty Name="Accident_Description" ColumnName="Accident_Description" />
+                <ScalarProperty Name="Claim_Amount" ColumnName="Claim_Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Company_Admin">
+            <EntityTypeMapping TypeName="Vehicle_Insurance_ManagmentModel.Company_Admin">
+              <MappingFragment StoreEntitySet="Company_Admin">
+                <ScalarProperty Name="Admin_Id" ColumnName="Admin_Id" />
+                <ScalarProperty Name="Admin_Name" ColumnName="Admin_Name" />
+                <ScalarProperty Name="Admin_Pass" ColumnName="Admin_Pass" />
+                <ScalarProperty Name="Admin_Email" ColumnName="Admin_Email" />
+                <ScalarProperty Name="Admin_Phone" ColumnName="Admin_Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Company_Expense">
+            <EntityTypeMapping TypeName="Vehicle_Insurance_ManagmentModel.Company_Expense">
+              <MappingFragment StoreEntitySet="Company_Expense">
+                <ScalarProperty Name="Exp_Id" ColumnName="Exp_Id" />
+                <ScalarProperty Name="Exp_Description" ColumnName="Exp_Description" />
+                <ScalarProperty Name="Exp_Amt" ColumnName="Exp_Amt" />
+                <ScalarProperty Name="Exp_Date" ColumnName="Exp_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="Vehicle_Insurance_ManagmentModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
+                <ScalarProperty Name="Cust_Name" ColumnName="Cust_Name" />
+                <ScalarProperty Name="Cust_Add" ColumnName="Cust_Add" />
+                <ScalarProperty Name="Cust_Phone" ColumnName="Cust_Phone" />
+                <ScalarProperty Name="Cust_Email" ColumnName="Cust_Email" />
+                <ScalarProperty Name="Cust_Pass" ColumnName="Cust_Pass" />
+                <ScalarProperty Name="Cust_CNIC" ColumnName="Cust_CNIC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InsurancePolicies">
+            <EntityTypeMapping TypeName="Vehicle_Insurance_ManagmentModel.InsurancePolicy">
+              <MappingFragment StoreEntitySet="InsurancePolicy">
+                <ScalarProperty Name="Pol_Id" ColumnName="Pol_Id" />
+                <ScalarProperty Name="PolicyName" ColumnName="PolicyName" />
+                <ScalarProperty Name="Est_Amount" ColumnName="Est_Amount" />
+                <ScalarProperty Name="Ins_Amount" ColumnName="Ins_Amount" />
+                <ScalarProperty Name="Pol_Duration" ColumnName="Pol_Duration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Purchases">
+            <EntityTypeMapping TypeName="Vehicle_Insurance_ManagmentModel.Purchase">
+              <MappingFragment StoreEntitySet="Purchase">
+                <ScalarProperty Name="Pur_Id" ColumnName="Pur_Id" />
+                <ScalarProperty Name="Vehicle" ColumnName="Vehicle" />
+                <ScalarProperty Name="Pur_Pol" ColumnName="Pur_Pol" />
+                <ScalarProperty Name="Pur_Date" ColumnName="Pur_Date" />
+                <ScalarProperty Name="Total_Amt" ColumnName="Total_Amt" />
+                <ScalarProperty Name="PP_Status" ColumnName="PP_Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="testimonials">
+            <EntityTypeMapping TypeName="Vehicle_Insurance_ManagmentModel.testimonial">
+              <MappingFragment StoreEntitySet="testimonials">
+                <ScalarProperty Name="Test_ID" ColumnName="Test_ID" />
+                <ScalarProperty Name="Cust_Test" ColumnName="Cust_Test" />
+                <ScalarProperty Name="Cust_Name" ColumnName="Cust_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehicles">
+            <EntityTypeMapping TypeName="Vehicle_Insurance_ManagmentModel.Vehicle">
+              <MappingFragment StoreEntitySet="Vehicle">
+                <ScalarProperty Name="Veh_Id" ColumnName="Veh_Id" />
+                <ScalarProperty Name="Veh_Name" ColumnName="Veh_Name" />
+                <ScalarProperty Name="Veh_OwnerName" ColumnName="Veh_OwnerName" />
+                <ScalarProperty Name="Veh_Model" ColumnName="Veh_Model" />
+                <ScalarProperty Name="Veh_Version" ColumnName="Veh_Version" />
+                <ScalarProperty Name="Veh_Rate" ColumnName="Veh_Rate" />
+                <ScalarProperty Name="Veh_BodyNo" ColumnName="Veh_BodyNo" />
+                <ScalarProperty Name="Veh_EngineNo" ColumnName="Veh_EngineNo" />
+                <ScalarProperty Name="Veh_No" ColumnName="Veh_No" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

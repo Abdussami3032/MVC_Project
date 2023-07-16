@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Vehicle_Insurance_ManagmentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Billing">
+    <Key>
+      <PropertyRef Name="Bill_Id" />
+    </Key>
+    <Property Name="Bill_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Pur_Details" Type="int" />
+    <Property Name="Bill_Date" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Pur_Amount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Claim">
+    <Key>
+      <PropertyRef Name="Claim_Id" />
+    </Key>
+    <Property Name="Claim_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Bill_Id" Type="int" />
+    <Property Name="Claim_Date" Type="varchar" MaxLength="10" />
+    <Property Name="Accident_Place" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Accident_Description" Type="varchar(max)" Nullable="false" />
+    <Property Name="Claim_Amount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Company_Admin">
+    <Key>
+      <PropertyRef Name="Admin_Id" />
+    </Key>
+    <Property Name="Admin_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Admin_Name" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Admin_Pass" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Admin_Email" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Admin_Phone" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Company_Expense">
+    <Key>
+      <PropertyRef Name="Exp_Id" />
+    </Key>
+    <Property Name="Exp_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Exp_Description" Type="varchar(max)" Nullable="false" />
+    <Property Name="Exp_Amt" Type="int" Nullable="false" />
+    <Property Name="Exp_Date" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Cust_Id" />
+    </Key>
+    <Property Name="Cust_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cust_Name" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Cust_Add" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Cust_Phone" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="Cust_Email" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Cust_Pass" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Cust_CNIC" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InsurancePolicy">
+    <Key>
+      <PropertyRef Name="Pol_Id" />
+    </Key>
+    <Property Name="Pol_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PolicyName" Type="varchar" MaxLength="30" />
+    <Property Name="Est_Amount" Type="int" Nullable="false" />
+    <Property Name="Ins_Amount" Type="int" Nullable="false" />
+    <Property Name="Pol_Duration" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Purchase">
+    <Key>
+      <PropertyRef Name="Pur_Id" />
+    </Key>
+    <Property Name="Pur_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Vehicle" Type="int" />
+    <Property Name="Pur_Pol" Type="int" />
+    <Property Name="Pur_Date" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Total_Amt" Type="int" Nullable="false" />
+    <Property Name="PP_Status" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="testimonials">
+    <Key>
+      <PropertyRef Name="Test_ID" />
+    </Key>
+    <Property Name="Test_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cust_Test" Type="varchar(max)" />
+    <Property Name="Cust_Name" Type="int" />
+  </EntityType>
+  <EntityType Name="Vehicle">
+    <Key>
+      <PropertyRef Name="Veh_Id" />
+    </Key>
+    <Property Name="Veh_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Veh_Name" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Veh_OwnerName" Type="int" />
+    <Property Name="Veh_Model" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Veh_Version" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Veh_Rate" Type="int" Nullable="false" />
+    <Property Name="Veh_BodyNo" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Veh_EngineNo" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Veh_No" Type="int" />
+  </EntityType>
+  <Association Name="FK__Billing__Pur_Det__2E1BDC42">
+    <End Role="Purchase" Type="Self.Purchase" Multiplicity="0..1" />
+    <End Role="Billing" Type="Self.Billing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Purchase">
+        <PropertyRef Name="Pur_Id" />
+      </Principal>
+      <Dependent Role="Billing">
+        <PropertyRef Name="Pur_Details" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Claim__Bill_Id__30F848ED">
+    <End Role="Billing" Type="Self.Billing" Multiplicity="0..1" />
+    <End Role="Claim" Type="Self.Claim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Billing">
+        <PropertyRef Name="Bill_Id" />
+      </Principal>
+      <Dependent Role="Claim">
+        <PropertyRef Name="Bill_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Purchase__Pur_Po__2B3F6F97">
+    <End Role="InsurancePolicy" Type="Self.InsurancePolicy" Multiplicity="0..1" />
+    <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InsurancePolicy">
+        <PropertyRef Name="Pol_Id" />
+      </Principal>
+      <Dependent Role="Purchase">
+        <PropertyRef Name="Pur_Pol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Purchase__Vehicl__2A4B4B5E">
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="0..1" />
+    <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicle">
+        <PropertyRef Name="Veh_Id" />
+      </Principal>
+      <Dependent Role="Purchase">
+        <PropertyRef Name="Vehicle" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__testimoni__Cust___38996AB5">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="testimonials" Type="Self.testimonials" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Cust_Id" />
+      </Principal>
+      <Dependent Role="testimonials">
+        <PropertyRef Name="Cust_Name" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Vehicle__Veh_Own__25869641">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Cust_Id" />
+      </Principal>
+      <Dependent Role="Vehicle">
+        <PropertyRef Name="Veh_OwnerName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Vehicle_Insurance_ManagmentModelStoreContainer">
+    <EntitySet Name="Billing" EntityType="Self.Billing" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Claim" EntityType="Self.Claim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Company_Admin" EntityType="Self.Company_Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Company_Expense" EntityType="Self.Company_Expense" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InsurancePolicy" EntityType="Self.InsurancePolicy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="testimonials" EntityType="Self.testimonials" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vehicle" EntityType="Self.Vehicle" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Billing__Pur_Det__2E1BDC42" Association="Self.FK__Billing__Pur_Det__2E1BDC42">
+      <End Role="Purchase" EntitySet="Purchase" />
+      <End Role="Billing" EntitySet="Billing" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Claim__Bill_Id__30F848ED" Association="Self.FK__Claim__Bill_Id__30F848ED">
+      <End Role="Billing" EntitySet="Billing" />
+      <End Role="Claim" EntitySet="Claim" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Purchase__Pur_Po__2B3F6F97" Association="Self.FK__Purchase__Pur_Po__2B3F6F97">
+      <End Role="InsurancePolicy" EntitySet="InsurancePolicy" />
+      <End Role="Purchase" EntitySet="Purchase" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Purchase__Vehicl__2A4B4B5E" Association="Self.FK__Purchase__Vehicl__2A4B4B5E">
+      <End Role="Vehicle" EntitySet="Vehicle" />
+      <End Role="Purchase" EntitySet="Purchase" />
+    </AssociationSet>
+    <AssociationSet Name="FK__testimoni__Cust___38996AB5" Association="Self.FK__testimoni__Cust___38996AB5">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="testimonials" EntitySet="testimonials" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Vehicle__Veh_Own__25869641" Association="Self.FK__Vehicle__Veh_Own__25869641">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Vehicle" EntitySet="Vehicle" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

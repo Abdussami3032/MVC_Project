@@ -1,0 +1,121 @@
+﻿@model WebApplication1.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+}
+<div style="margin-top:100px">
+    <h2>Details</h2>
+
+    <div>
+        <h4>Customer</h4>
+        <hr />
+        @if (Session["Admin"] != null)
+        {
+            <div class="container">
+                <table class="table-bordered">
+                    <thead>
+                        <tr>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Cust_Name)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Cust_Add)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Cust_Phone)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Cust_Email)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Cust_Pass)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Cust_CNIC)
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                @Html.DisplayFor(model => model.Cust_Name)
+                            </th>
+
+                            <th>
+                                @Html.DisplayFor(model => model.Cust_Add)
+                            </th>
+
+                            <th>
+                                @Html.DisplayFor(model => model.Cust_Phone)
+                            </th>
+
+                            <th>
+                                @Html.DisplayFor(model => model.Cust_Email)
+                            </th>
+
+                            <th>
+                                @Html.DisplayFor(model => model.Cust_Pass)
+                            </th>
+
+                            <th>
+                                @Html.DisplayFor(model => model.Cust_CNIC)
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>}
+        @if(Session["UserId"] != null)
+        { 
+        <section class="w3l-bottom-grids-6 py-5" id="services">
+            <div class="container py-lg-5 py-md-4">
+                <h6 class="title-small text-center">My Account</h6>
+                <h3 class="title-big mb-md-5 mb-4 text-center">Insurance Policies</h3>
+                <div class="grids-area-hny main-cont-wthree-fea row">
+                    <div class="col-lg-4 col-md-6 grids-feature">
+                        <div class="area-box">
+                            <span class="fa fa-user"></span>
+                            <h4><a href="#feature" class="title-head">@Html.DisplayFor(model => model.Cust_Name)</a></h4>
+                            <p>@Html.DisplayNameFor(model => model.Cust_Phone):</p>
+                            <p>@Html.DisplayFor(model => model.Cust_Phone)</p>
+                            <br />
+                            <p> @Html.DisplayNameFor(model => model.Cust_Email):</p>
+                            <p>@Html.DisplayFor(model => model.Cust_Email)</p>
+                            <br />
+                            <p>@Html.DisplayNameFor(model => model.Cust_CNIC):</p>
+                            <p>@Html.DisplayFor(model => model.Cust_CNIC)</p>
+                            <br />
+                            <p>@Html.DisplayNameFor(model => model.Cust_Add)</p>
+                            <p>@Html.DisplayFor(model => model.Cust_Add)</p>
+                            <br />
+                            <p>@Html.DisplayNameFor(model => model.Cust_Pass)</p>
+                            <p>@Html.DisplayFor(model => model.Cust_Pass)</p>
+                            <br />
+                            <p style="text-align:center">
+                                @Html.ActionLink("Edit", "Edit", new { id = Model.Cust_Id })
+                                @if (Session["Admin"] != null)
+                                {
+                                    @Html.ActionLink("Back to List", "Customer")
+                                }
+                            </p>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </section>
+        }
+    </div>
+</div>
+
+

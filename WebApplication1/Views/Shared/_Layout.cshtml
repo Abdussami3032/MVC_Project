@@ -1,0 +1,327 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>@ViewBag.Title</title>
+    <!-- Google fonts -->
+    <link href="//fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link href="~/assets/css/style-starter.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+    <!-- header -->
+    <header id="site-header" class="fixed-top">
+        <section class="w3l-header-4">
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <h1>
+                        <span class="fa fa-car" aria-hidden="true"></span>
+                        <a class="navbar-brand" @Html.ActionLink("Vehicle Insurance", "Index", "Account")
+                        </a>
+                    </h1>
+                    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
+                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="fa icon-expand fa-bars"></span>
+                        <span class="fa icon-close fa-times"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                @Html.ActionLink("Home", "Index", "Account", null, new { @class = "nav-link" })
+                            </li>
+
+                            <li>
+                                @Html.ActionLink("Insurances", "Insurance", "Account",null, new { @class = "nav-link" })
+                            </li>
+                            <li>
+                                @Html.ActionLink("Testimonial", "Testimonials", "Account", null, new { @class ="nav-link"})
+                            </li>
+                            <li>
+                                @Html.ActionLink("SiteMap", "Sitemap", "Account", null, new { @class = "nav-link" })
+                            </li>
+                            <li>
+                                @Html.ActionLink("Contact", "ContactUs", "Account", null, new { @class = "nav-link" })
+                            </li>
+                            <li>
+                                @Html.ActionLink("AboutUs", "AboutUs", "Account", null, new { @class = "nav-link" })
+                            </li>
+                            <li>
+                                @Html.ActionLink("Register Now", "Register", "Account", null, new { @class = "nav-link" })
+                            </li>
+
+                            @if (Session["UserID"] != null)
+                            {
+
+                                <li class="dropdown dropdown-item">
+                                    <a class="dropdown-toggle nav-item nav-link" data-toggle="dropdown" href="#">
+                                        My Account<span class="glyphicon glyphicon-menu-hamburger" style="color:lightgray"></span>
+
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li style="text-align:center"> @Html.ActionLink("My Profile", "Details", "Customers", new { id = Session["UserID"] }, new { @class = "nav-link" })</li>
+                                        <li style="text-align:center">@Html.ActionLink("Vehicle", "VehicleByCustomer", "Vehicles", new { id = Session["UserID"] }, new { @class = "nav-link" })</li>
+                                        <li style="text-align:center">@Html.ActionLink("Purchase", "PurchaseByCustomer", "Purchases", new { id = Session["UserID"] }, new { @class = "nav-link" })</li>
+                                        <li style="text-align:center">@Html.ActionLink("InsurancePoilcy", "TypeByCustomer", "InsurancePolicies", new { id = Session["UserId"] }, new { @class = "nav-link" })</li>
+                                        <li style="text-align:center">@Html.ActionLink("Billings", "BillsByCustomer", "Billings", new { id = Session["UserId"] }, new { @class = "nav-link" })</li>
+                                        <li style="text-align:center">@Html.ActionLink("Claims", "ClaimByCustomer", "Claims", new { id = Session["UserID"] }, new { @class = "nav-link" })</li>
+                                    </ul>
+                                </li>
+
+
+                                <li class="nav-item ml-3">
+                                    @Html.ActionLink("Logout", "LogOut", "Account", null, new { @class = "btn btn-outline-primary btn-style mr-2 btn-style danger" })
+                                </li>
+                            }
+                            else if (Session["Admin"] != null)
+                            {
+                                <li class="dropdown dropdown-item">
+                                    <a class="dropdown-toggle nav-item nav-link" data-toggle="dropdown" href="#">
+                                        Admin Pages<span class="glyphicon glyphicon-menu-hamburger" style="color:lightgray"></span>
+
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li class="nav-link nav-item" style="text-align:center">@Html.ActionLink("Customer", "Customer", "Admin")</li>
+                                        <li class="nav-link nav-item" style="text-align:center">@Html.ActionLink("Vehicles", "Vehicle", "Admin")</li>
+                                        <li class="nav-link nav-item" style="text-align:center">@Html.ActionLink("Insurance", "Insurance", "Admin")</li>
+                                        <li class="nav-link nav-item" style="text-align:center">@Html.ActionLink("Bills", "Bill", "Admin")</li>
+                                        <li class="nav-link nav-item" style="text-align:center">@Html.ActionLink("Claims", "Claim", "Admin")</li>
+                                        <li class="nav-item nav-link" style="text-align:center">@Html.ActionLink("Expenses", "Comp_Exp", "Admin")</li>
+                                        <li class="nav-item nav-link" style="text-align:center">@Html.ActionLink("Purchases", "Purchase", "Admin")</li>
+                                    </ul>
+                                </li>
+
+                                <li class="nav-item ml-3">
+                                    @Html.ActionLink("Logout", "LogOut", "Account", null, new { @class = "btn btn-outline-primary btn-style mr-2 btn-style danger" })
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item ml-3">
+                                    @Html.ActionLink("Login", "Login", "Account",null, new { @class = "btn btn-outline-primary btn-style mr-2 btn-style danger" })
+                                </li>
+                            }
+                            <li>
+
+                        </ul>
+                            <!-- //toggle switch for light and dark theme -->
+</div>
+                    <!-- toggle switch for light and dark theme -->
+                    <div class="mobile-position">
+                        <nav class="navigation">
+                            <div class="theme-switch-wrapper">
+                                <label class="theme-switch" for="checkbox">
+                                    <input type="checkbox" id="checkbox">
+                                    <div class="mode-container">
+                                        <i class="gg-sun"></i>
+                                        <i class="gg-moon"></i>
+                                    </div>
+                                </label>
+                            </div>
+                        </nav>
+                    </div>
+                </nav>
+            </div>
+        </section>
+    </header>
+    <!-- //header -->
+    <!-- footer -->
+    <section class="w3l-footer-29-main" id="footer">
+        <div class="footer-29 py-5">
+            <div class="container pb-lg-3">
+                <div class="row footer-top-29">
+                    <div class="col-lg-4 col-md-6 footer-list-29 footer-1 mt-md-4">
+                        <h6 class="footer-title-29">Contact Us </h6>
+                        <h6 class="footer-title-29"> (042) 111-000-014</h6>
+                        <ul>
+                            <li>
+                                <p>
+                                    <span class="fa fa-map-marker"></span> VehInsure.com | Vehicle Insurance , 7th Floor Kawish Crown Plaza Block 7 & 8 DACHS Plot, 37 75350 Shahrah-e-Faisal, Karachi
+                                </p>
+                            </li>
+                            <li><a href="tel:(042) 111-000-014"><span class="fa fa-phone"></span> </a></li>
+                            <li>
+                                <a href="mailto: Vehinsure@mail.com" class="mail">
+                                    <span class="fa fa-envelope-open-o"></span>
+                                    example@mail.com
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="main-social-footer-29">
+                            <a href="#facebook" class="facebook"><span class="fa fa-facebook"></span></a>
+                            <a href="#twitter" class="twitter"><span class="fa fa-twitter"></span></a>
+                            <a href="#instagram" class="instagram"><span class="fa fa-instagram"></span></a>
+                            <a href="#google-plus" class="google-plus"><span class="fa fa-google-plus"></span></a>
+                            <a href="#linkedin" class="linkedin"><span class="fa fa-linkedin"></span></a>
+                        </div>
+                    </div>
+                   
+                    <div class="col-lg-4 col-md-6 col-6 footer-list-29 footer-4 mt-4" style="margin-left:400px">
+                        <ul>
+                            <h6 class="footer-title-29">Quick Links</h6>
+                            <li>@Html.ActionLink("Home","Index","Account")</li>
+                            <li>@Html.ActionLink("About Us","AboutUs","Account")</li>
+                            <li>@Html.ActionLink("Testimonials","Testimonials","Account")</a></li>
+                            <li>@Html.ActionLink("SiteMap","Sitemap","Account")</li>
+                            <li>@Html.ActionLink("Get in touch","Contact","Account")</li>
+                        </ul>
+                    </div>
+                    
+                </div>
+                <div class="row bottom-copies">
+                    <p class="copy-footer-29 col-lg-8">
+                        © 2021 Vehicle Insurance Managment. All rights reserved | Design by
+                    </p>
+                    <ul class="list-btm-29 col-lg-4">
+                        <li><a href="#link">Privacy policy</a></li>
+                        <li><a href="#link">Terms of service</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" class="bg-primary" title="Go to top">
+            <span class="fa fa-level-up"></span>
+        </button>
+        <script>
+            // When the user scrolls down 20px from the top of the document, show the button
+            window.onscroll = function () {
+                scrollFunction()
+            };
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    document.getElementById("movetop").style.display = "block";
+                } else {
+                    document.getElementById("movetop").style.display = "none";
+                }
+            }
+
+            // When the user clicks on the button, scroll to the top of the document
+            function topFunction() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }
+        </script>
+        <!-- /move top -->
+    </section>
+    <!-- // footer -->
+    <script src="~/assets/js/jquery-3.3.1.min.js"></script> <!-- Common jquery plugin -->
+    <script src="~/assets/js/theme-change.js"></script><!-- theme switch js (light and dark)-->
+    <!-- magnific popup -->
+    <script src="~/assets/js/jquery.magnific-popup.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.popup-with-zoom-anim').magnificPopup({
+                type: 'inline',
+
+                fixedContentPos: false,
+                fixedBgPos: true,
+
+                overflowY: 'auto',
+
+                closeBtnInside: true,
+                preloader: false,
+
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-zoom-in'
+            });
+
+            $('.popup-with-move-anim').magnificPopup({
+                type: 'inline',
+
+                fixedContentPos: false,
+                fixedBgPos: true,
+
+                overflowY: 'auto',
+
+                closeBtnInside: true,
+                preloader: false,
+
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-slide-bottom'
+            });
+        });
+    </script>
+    <!-- magnific popup -->
+    <script src="~/assets/js/owl.carousel.js"></script>
+    <!-- script for tesimonials carousel slider -->
+    <script>
+        $(document).ready(function () {
+            $("#owl-demo1").owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: false,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: false
+                    },
+                    736: {
+                        items: 1,
+                        nav: false
+                    },
+                    1000: {
+                        items: 2,
+                        nav: false,
+                        loop: false
+                    }
+                }
+            })
+        })
+    </script>
+    <!-- //script for tesimonials carousel slider -->
+    <!--/MENU-JS-->
+    <script>
+        $(window).on("scroll", function () {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 80) {
+                $("#site-header").addClass("nav-fixed");
+            } else {
+                $("#site-header").removeClass("nav-fixed");
+            }
+        });
+
+        //Main navigation Active Class Add Remove
+        $(".navbar-toggler").on("click", function () {
+            $("header").toggleClass("active");
+        });
+        $(document).on("ready", function () {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+            $(window).on("resize", function () {
+                if ($(window).width() > 991) {
+                    $("header").removeClass("active");
+                }
+            });
+        });
+    </script>
+    <!--//MENU-JS-->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+        $(function () {
+            $('.navbar-toggler').click(function () {
+                $('body').toggleClass('noscroll');
+            })
+        });
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!--bootstrap-->
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <!-- //bootstrap-->
+    <script>
+        $(document).ready(function () {
+            $('.dropdown-toggle').dropdown();
+        });
+    </script>
+</body>
+</html>

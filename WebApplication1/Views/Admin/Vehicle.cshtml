@@ -1,0 +1,79 @@
+﻿@model IEnumerable<WebApplication1.Models.Vehicle>
+
+@{
+    ViewBag.Title = "Vehicle";
+}
+<div style="margin-top:100px">
+    <h2 style="text-align:center">Vehicle</h2>
+
+    <p style="text-align:center">
+        @Html.ActionLink("Create New", "Create", "Vehicles")
+    </p>
+    <div class="container-fluid">
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Veh_Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Veh_Model)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Veh_Version)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Veh_Rate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Veh_BodyNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Veh_EngineNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Veh_No)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Customer.Cust_Name)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Veh_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Veh_Model)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Veh_Version)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Veh_Rate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Veh_BodyNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Veh_EngineNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Veh_No)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Customer.Cust_Name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Vehicles", new { id = item.Veh_Id }, null) |
+                        @Html.ActionLink("Details", "Details", "Vehicles", new { id = item.Veh_Id }, null) |
+                        @Html.ActionLink("Delete", "Delete", "Vehicles", new { id = item.Veh_Id }, null)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

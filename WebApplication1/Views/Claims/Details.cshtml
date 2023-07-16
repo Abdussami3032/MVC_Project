@@ -1,0 +1,109 @@
+﻿@model WebApplication1.Models.Claim
+
+@{
+    ViewBag.Title = "Details";
+}
+<div style="margin-top:100px">
+    <h2>Details</h2>
+
+    <div>
+        <h4>Claim</h4>
+        <hr />
+        @if (Session["Admin"] != null)
+        {
+            <div class="container" style="margin-left:600px">
+                <table class="table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Claim_Date)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Accident_Place)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Accident_Description)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Claim_Amount)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Billing.Bill_Date)
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                @Html.DisplayFor(model => model.Claim_Date)
+                            </th>
+
+                            <th>
+                                @Html.DisplayFor(model => model.Accident_Place)
+                            </th>
+
+                            <th>
+                                @Html.DisplayFor(model => model.Accident_Description)
+                            </th>
+
+                            <th>
+                                @Html.DisplayFor(model => model.Claim_Amount)
+                            </th>
+
+                            <th>
+                                @Html.DisplayFor(model => model.Billing.Bill_Date)
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>}
+        @if (Session["UserID"] != null)
+        {
+            <h4>InsurancePolicy</h4>
+            <h4>Customer</h4>
+            
+            <section class="w3l-bottom-grids-6 py-5" id="services">
+                <div class="container py-lg-5 py-md-4">
+                    <h6 class="title-small text-center">My Account</h6>
+                    <h3 class="title-big mb-md-5 mb-4 text-center">Insurance Policies</h3>
+                    <div class="grids-area-hny main-cont-wthree-fea row">
+                        <div class="col-lg-4 col-md-6 grids-feature">
+                            <div class="area-box">
+                                <span class="fa fa-user"></span>
+                                <h4><a href="#feature" class="title-head">@Html.DisplayFor(model => model.Accident_Place)</a></h4>
+                                <p>@Html.DisplayNameFor(model => model.Accident_Description):</p>
+                                <p>@Html.DisplayFor(model => model.Accident_Description)</p>
+                                <br />
+                                <p> @Html.DisplayNameFor(model => model.Claim_Amount):</p>
+                                <p>@Html.DisplayFor(model => model.Claim_Amount)</p>
+                                <br />
+                                <p>@Html.DisplayNameFor(model => model.Billing.Bill_Date):</p>
+                                <p>@Html.DisplayFor(model => model.Billing.Bill_Date)</p>
+                                <br />
+                               
+                                <p style="text-align:center">
+                                    @Html.ActionLink("Edit", "Edit", new { id = Model.Claim_Id })
+                                    @if (Session["Admin"] != null)
+                                    {
+                                        @Html.ActionLink("Back to List", "Customer")
+                                    }
+                                </p>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            </section>
+        
+
+    }
+    </div>

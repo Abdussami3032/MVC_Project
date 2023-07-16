@@ -1,0 +1,79 @@
+﻿@model WebApplication1.Models.Customer
+<section class="w3l-about-breadcrumb">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-5">
+        <div class="container py-lg-5 py-md-3">
+            <h2 class="title">Get in touch</h2>
+        </div>
+    </div>
+</section>
+<section class="w3l-breadcrumb">
+    <div class="container">
+        <ul class="breadcrumbs-custom-path">
+            <li><a href="#url">Home</a></li>
+            <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> Contact Us</li>
+        </ul>
+    </div>
+</section>
+<!-- contacts -->
+<section class="w3l-contact-7 py-5">
+    <div class="contacts-9 py-lg-5 py-md-4">
+        <div class="container">
+            <div class="top-map">
+                <div class="row map-content-9">
+                    <div class="col-lg-8">
+                        <h3 class="title-big">Contact us</h3>
+                        <p class="mb-4">Your email address will not be published. Required fields are marked *</p>
+                        <form action="https://sendmail.w3layouts.com/submitForm" method="post" class="text-right">
+                            <div class="form-grid">
+                                @Html.TextBoxFor(model => model.Cust_Name, null, new { @placeholder = "Name", @class = "form-input" })
+                                @Html.TextBoxFor(model => model.Cust_Email, null, new { @placeholder = "Email", @class = "form-input" })
+                                @Html.TextBoxFor(model => model.Cust_Phone, null, new { @placeholder = "Phone Number", @class = "form-input" })
+
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-style mt-3">Submit</button>
+                        </form>
+                    </div>
+                    <div class="col-lg-4 cont-details">
+                        <address>
+                            <p>For more info or inquiry about our services, please feel free to get in touch with us.</p>
+                            <h5 class="mt-md-5 mt-4">New York Office</h5>
+                            <p>
+                                <span class="fa fa-map-marker"></span>Car Servicing, 208 Trainer Avenue street, Corner
+                                Market, NY - 62617
+                            </p>
+                            <p>
+                                <a href="mailto:mail@example.com">
+                                    <span class="fa fa-envelope"></span>mail@example.com
+                                </a>
+                            </p>
+                            <p>
+                                <a href="mailto:support@example.com">
+                                    <span class="fa fa-support"></span>support@example.com
+                                </a>
+                            </p>
+                            <p>
+                                <span class="fa fa-phone"></span><a href="tel:+1(12) 366 411 4999">
+                                    +1(12) 366 411
+                                    4999
+                                </a>
+                            </p>
+                            <h5 class="mt-4 mb-3">Follow us on social media</h5>
+                            <div class="main-social-footer-29">
+                                <a href="#facebook" class="facebook"><span class="fa fa-facebook"></span></a>
+                                <a href="#twitter" class="twitter"><span class="fa fa-twitter"></span></a>
+                                <a href="#instagram" class="instagram"><span class="fa fa-instagram"></span></a>
+                                <a href="#linkedin" class="linkedin"><span class="fa fa-linkedin"></span></a>
+                            </div>
+                        </address>
+                    </div>
+                </div>
+                <div class="map mt-lg-5 mt-md-3">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.2895687731!2d-74.26055986835598!3d40.697668402590374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2sin!4v1562582305883!5m2!1sen!2sin"
+                            frameborder="0" style="border:0" allowfullscreen=""></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- //contacts -->

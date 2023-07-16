@@ -1,0 +1,50 @@
+﻿@model WebApplication1.Models.Company_Admin
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Company_Admin</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin_Pass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin_Pass)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin_Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin_Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin_Phone)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Admin_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

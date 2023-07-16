@@ -1,0 +1,55 @@
+﻿@model IEnumerable<WebApplication1.Models.InsurancePolicy>
+
+@{
+    ViewBag.Title = "Insurance";
+}
+<div style="margin-top:100px">
+    <h2 style="text-align:center">Insurance</h2>
+
+    <p style="text-align:center">
+        @Html.ActionLink("Create New", "Create", "InsurancePolicies", null)
+    </p>
+    <div class="container-fluid">
+        <table class=" table table-bordered">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PolicyName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Est_Amount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ins_Amount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pol_Duration)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PolicyName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Est_Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ins_Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Pol_Duration)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "InsurancePolicies", new { id = item.Pol_Id }, null) |
+                        @Html.ActionLink("Details", "Details", "InsurancePolicies", new { id = item.Pol_Id }, null) |
+                        @Html.ActionLink("Delete", "Delete", "InsurancePolicies", new { id = item.Pol_Id }, null)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

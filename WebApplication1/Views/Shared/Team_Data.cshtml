@@ -1,0 +1,57 @@
+﻿@model IEnumerable<WebApplication1.Models.Company_Admin>
+
+<section class="w3l-team-main" id="team">
+    <div class="team py-5">
+        <div class="container py-lg-5">
+            <div class="row team-row">
+                <div class="col-lg-3 team-left mb-lg-0 mb-5">
+                    <div class="title-content text-left">
+                        <h6 class="title-small">Expert team</h6>
+                        <h3 class="title-big mb-4">Our Team members</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet elit et sunt in culpa qui
+                            officia sed deserunt mollit anim id dolor mollit anim id est nulla.
+                        </p>
+                    </div>
+                </div>
+                <!-- end team member -->
+                @foreach(var item in Model) {
+                <div class="col-lg-3 col-md-4 col-sm-6 team-wrap">
+                    <div class="team-info text-left">
+                        <div class="column position-relative">
+                            
+                        </div>
+                        <div class="column border-card">
+                            <h3 class="name-pos">@item.Admin_Name</h3>
+                            <p>@Html.DisplayNameFor(model => model.Admin_Email)</p>
+                            <p>@Html.DisplayFor(modelItem => item.Admin_Email)</p>
+                            <br />
+                            <p>@Html.DisplayNameFor(model =>model.Admin_Phone)</p>
+                            <p>@Html.DisplayFor(modelItem =>item.Admin_Phone)
+                            <div class="social">
+                                <a href="#facebook" class="facebook">
+                                    <span class="fa fa-facebook"
+                                          aria-hidden="true"></span>
+                                </a>
+                                <a href="#twitter" class="twitter">
+                                    <span class="fa fa-twitter"
+                                          aria-hidden="true"></span>
+                                </a>
+                                <a href="#email" class="email">
+                                    <span class="fa fa-envelope-o"></span>
+                                </a>
+                                <a href="#phone" class="phone"><span class="fa fa-phone"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+                <!-- end team member -->
+              
+                <!-- end team member -->
+                <!-- end team member -->
+               
+            </div>
+        </div>
+    </div>
+</section>
